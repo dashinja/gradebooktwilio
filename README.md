@@ -11,3 +11,4 @@ Third:
 ```dotnet run -p src/GradeBook/```
 
 Answer questions and get results.
+Sends certain results to a specified parent via SMS.
