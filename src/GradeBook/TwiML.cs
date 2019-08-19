@@ -22,8 +22,8 @@ namespace GradeBook
 
       var message = MessageResource.Create(
           body: $"Your child's first grades are {kidStats}|",
-          from: new Twilio.Types.PhoneNumber(DotNetEnv.Env.GetString("FROM")),
-          to: new Twilio.Types.PhoneNumber(DotNetEnv.Env.GetString("TO"))
+          from: new Twilio.Types.PhoneNumber("+19803210937"),
+          to: new Twilio.Types.PhoneNumber("+17047705187")
       );
 
       Console.WriteLine($"Message SID: {message.Sid}");
