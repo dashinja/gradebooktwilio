@@ -35,6 +35,7 @@ namespace GradeBook
       book.PrintStats(book);
 
       Book.Description();
+      TwiML.Send(book.Grades);
     }
   }
 }
