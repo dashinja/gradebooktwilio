@@ -12,3 +12,5 @@ Third:
 
 Answer questions and get results.
 Sends certain results to a specified parent via SMS.
+
+** NOTE: Must provide your own Twilio Credentials
