@@ -24,16 +24,25 @@ namespace GradeBook
     }
     public string AddGrade(double grade)
     {
-      if (grade > 100 || grade < 0)
+      try
       {
-        Console.WriteLine($"You added grade '{grade}'. Grades outside the range 0-100 are not saved.{lineBreaker}");
-        return $"Grades outside the range 0-100 are not saved.";
+        if (grade > 100 || grade < 0)
+        {
+          // Console.WriteLine($"You added grade '{grade}'. Grades outside the range 0-100 are not saved.{lineBreaker}");
+          // return $"Grades outside the range 0-100 are not saved.";
+          throw new ArgumentException($"You added grade '{(grade)}'. Grades outside the range 0-100 are not saved.{lineBreaker}");
+        }
+        else
+        {
+          Grades.Add(grade);
+          Console.WriteLine($"Grade of {grade} added.");
+          return $"Grade added.";
+        }
       }
-      else
+      catch (ArgumentException e)
       {
-        Grades.Add(grade);
-        Console.WriteLine($"Grade of {grade} added.");
-        return $"Grade added.";
+        Console.WriteLine($"\nMethod{e.TargetSite}\nParam: {e.ParamName}\nError: {e.Message}\nError Source: {e.Source}\nStack Trace:{e.StackTrace}\n");
+        return null;
       }
     }
 
@@ -65,36 +74,36 @@ namespace GradeBook
 
     }
 
-public void AddLetterGrade(char letter)
-{
-  switch (letter)
-  {
-      case 'A':
-      AddGrade(90);
-      break;
+    public void AddGrade(char letter)
+    {
+      switch (letter)
+      {
+        case 'A':
+          AddGrade(90);
+          break;
 
-      case 'B':
-      AddGrade(80);
-      break;
+        case 'B':
+          AddGrade(80);
+          break;
 
-      case 'C':
-      AddGrade(70);
-      break;
+        case 'C':
+          AddGrade(70);
+          break;
 
-      case 'D':
-      AddGrade(60);
-      break;
+        case 'D':
+          AddGrade(60);
+          break;
 
-      case 'F':
-      AddGrade(0);
-      break;
+        case 'F':
+          AddGrade(0);
+          break;
 
-      default:
-        AddGrade(0);
-        break;
-  }
-}
-    
+        default:
+          AddGrade(0);
+          break;
+      }
+    }
+
     public string PrintStats(Book book)
     {
       return PrintStat.PrintStatistics(book);
@@ -115,7 +124,7 @@ public void AddLetterGrade(char letter)
         total.Low = double.MaxValue;
         total.Sum = 0;
 
-        
+
         for (var index = 0; index < Grades.Count; index++)
         {
           if (Grades[index] == 98.6)
@@ -147,27 +156,27 @@ public void AddLetterGrade(char letter)
 
         switch (total.Average)
         {
-            case var d when d >= 90.0:
+          case var d when d >= 90.0:
             total.Letter = 'A';
             break;
 
-            case var d when d >= 80.0:
+          case var d when d >= 80.0:
             total.Letter = 'B';
             break;
 
-            case var d when d >= 70.0:
+          case var d when d >= 70.0:
             total.Letter = 'C';
             break;
 
-            case var d when d >= 60.0:
+          case var d when d >= 60.0:
             total.Letter = 'D';
             break;
 
-            default:
+          default:
             total.Letter = 'F';
             break;
         }
-        
+
         return total;
       }
 
