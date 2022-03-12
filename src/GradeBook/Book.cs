@@ -22,7 +22,7 @@ namespace GradeBook
       StudentName = studentName;
       Subject = subject;
     }
-    public string AddGrade(double grade)
+    public virtual string AddGrade(double grade)
     {
       try
       {
@@ -53,7 +53,7 @@ namespace GradeBook
       Console.WriteLine($"Grades cleared for {StudentName}.{lineBreaker}");
     }
 
-    public void ListGrades()
+    public virtual void ListGrades()
     {
       string verb = Grades.Count == 1 ? "is" : "are";
       string agreement = Grades.Count == 1 ? "grade" : "grades";
@@ -104,7 +104,7 @@ namespace GradeBook
       }
     }
 
-    public string PrintStats(Book book)
+    public virtual string PrintStats(Book book)
     {
       return PrintStat.PrintStatistics(book);
     }
